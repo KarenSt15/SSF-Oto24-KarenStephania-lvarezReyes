@@ -1,0 +1,64 @@
+#T1 - 21/07/24
+#Ejemplo Horner
+
+def horner(coeffs, x):
+  acc = 0
+  for c in reversed(coeffs):
+    acc = acc * x + c
+  return acc
+
+print("Ejemplo de clase")
+print(horner([-19, 7, -4, 6], 3))
+
+#a)Variantes de Bendersky's website. Probar con 2-3 ejemplos. 
+
+def poly_naive(A, x):
+    p = 0
+    for i, a in enumerate(A):
+        p += (x ** i) * a
+    return p
+
+print("Naive method")
+print(poly_naive([3, -2, 7, 5], 6))
+print(poly_naive([2, 1, -4], 3))
+
+def poly_iter(A, x):
+    p = 0
+    xn = 1
+    for a in A:
+        p += xn * a
+        xn *= x
+    return p
+
+print("Con Iteraciones")
+print(poly_iter([5, 7, 1, 2], 4))
+print(poly_iter([3, -1, 4], 5))
+
+def poly_horner(A, x):
+    p = A[-1]
+    i = len(A) - 2
+    while i >= 0:
+        p = p * x + A[i]
+        i -= 1
+    return p
+
+print("Método Horner")
+print(poly_horner([-2, 11, 3, 7], 3))
+print(poly_horner([2, 8, 1, 3], 7))
+
+#b) Implementar la evaluación de cos(x) mediante i) el cálculo de la serie directa, ii) computación parcial. 
+#Comparar la convergencia de las evaluaciones, para ello generar una tabla con encabezados: x, iteración, suma, |suma-cos(x)|/cos(x), 
+#en donde cos(x) es el valor obtenido con la función directamente. La última columna es el error relativo de su aproximación. 
+#Haga una tabla para cada i) y ii). Comience con una tolerancia de 10^4. Repita con una tolerancia de 10^8. Compare. 
+#Muestre que para valores suficientemente pequeños de x, el algoritmo converge y a la respuesta correcta. 
+#Muestre que para valores grandes de x (~ 100), el algoritmo no converge. 
+
+
+
+#c) Datos de estrellas: usando el programa hrdiagram.py y los datos de stars.dat, reproducir la gráfica. Graficar con y sin pylab. 
+
+
+
+#d) Datos de alturas de hombres mexicanos (A, B). Mostrar los datos gráficamente. (como uds crean que sea lo mejor). 
+#Presentar los resultados en un documento conteniendo lo establecido en la página de inicio para los proyectos.
+
